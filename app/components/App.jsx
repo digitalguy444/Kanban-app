@@ -25,19 +25,28 @@ render(){
   const{notes}= this.state;
 
   return (
-    <div>
-  <button onClick={this.addNote}>+</button>
-    <Notes notes={notes} />
-    </div>
-    );
+      <div>
+        <button onClick={this.addNote}>+</button>
+        <Notes notes={notes} onDelete={this.deleteNote} />
+      </div>
+      );
   }
 
-addNote = () => {
-  this.setState({
+  addNote = () => {
+    this.setState({
        notes: this.state.notes.concat([{
          id: uuid.v4(),
          task: 'New task '
        }])
+     });
+   }
+
+   deleteNote = (id, e) => {
+  //   e.stopPropogation();
+//this was added originally to stop the affects of deleteNote from causing issues elsewhere
+     this.setState({
+       notes: this.state.notes.filter(note => note.id !== id)
+
      });
    }
 
