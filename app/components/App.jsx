@@ -3,24 +3,42 @@ import React from 'react';
 import uuid from 'uuid';
 import Notes from './Notes';
 
-const notes =[  //this is an array of notes as a frame for when real notes get in here
-{
- id: uuid.v4(),
-  task:'learn react'
-},
-{
-  id: uuid.v4(),
-  task: 'do laundry'
+
+export default class app extends React.Component {
+  constructor (props){
+    super(props);
+
+    this.state = {
+      notes: [
+        {
+         id: uuid.v4(),
+          task:'learn react'
+        },
+        {
+          id: uuid.v4(),
+          task: 'do laundry'
+      }
+    ]
+  };
 }
+render(){
+  const{notes}= this.state;
 
-];
+  return (
+    <div>
+  <button onClick={this.addNote}>+</button>
+    <Notes notes={notes} />
+    </div>
+    );
+  }
 
+addNote = () => {
+  this.setState({
+       notes: this.state.notes.concat([{
+         id: uuid.v4(),
+         task: 'New task '
+       }])
+     });
+   }
 
-export default () => (
-<div>
-  <button onClick={() => console.log('add note')}>+
-  </button>
-  <Notes notes= {notes}/>
-</div>
-
-);
+ }
