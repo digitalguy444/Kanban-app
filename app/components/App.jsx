@@ -10,19 +10,19 @@ export default class app extends React.Component {
 
     this.state = {
       notes: [
-        {
-         id: uuid.v4(),
-          task:'learn react'
-        },
-        {
-          id: uuid.v4(),
-          task: 'do laundry'
-      }
-    ]
-  };
-}
+              {
+               id: uuid.v4(),
+                task:'learn react'
+              },
+              {
+                id: uuid.v4(),
+                task: 'do laundry'
+              }
+            ]
+          };
+        }
 render(){
-  const{notes}= this.state;
+  const{notes} = this.state;
 
   return (
       <div>
@@ -42,7 +42,7 @@ render(){
    }
 
    deleteNote = (id, e) => {
-  //   e.stopPropogation();
+    e.stopPropagation();
 //this was added originally to stop the affects of deleteNote from causing issues elsewhere
      this.setState({
        notes: this.state.notes.filter(note => note.id !== id)
