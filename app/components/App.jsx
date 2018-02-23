@@ -43,7 +43,7 @@ render(){
 
    deleteNote = (id, e) => {
     e.stopPropagation();
-//this was added originally to stop the affects of deleteNote from causing issues elsewhere
+//this will stop event bubbling
      this.setState({
        notes: this.state.notes.filter(note => note.id !== id)
 
