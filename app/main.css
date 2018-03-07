@@ -9,3 +9,45 @@ body {
 
   border: 1px solid #ccc
 }
+
+.notes{
+  margin: .5 em;
+  padding-left : 0;
+
+  max-width: 15em;
+  list-style: none;
+}
+
+.note{
+overflow: auto;
+
+margin-bottom: .5em;
+padding: .5em;
+
+background-color: #fdfdfd;
+box-shadow: 0 0 .3em .03em rgba(0,0,0,.3);
+}
+
+.note:hover {
+box-shadow: 0 0 .3em .03em rgba(0,0,0,.7);
+transition: .6s;
+}
+
+.note .value {
+  /*force to use inline-block so it gets minimum height*/
+  display:inline-block;
+}
+
+.note.editable {
+float: left;
+}
+
+.note .delete {
+float: right;
+padding:0;
+background-color: #fdfdfd;
+border: none;
+cursor: pointer;
+visibility: hidden;
+
+}
