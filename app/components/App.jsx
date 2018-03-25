@@ -1,5 +1,4 @@
 import React from 'react';
-
 import uuid from 'uuid';
 import Notes from './Notes';
 import connect from '../libs/connect';
