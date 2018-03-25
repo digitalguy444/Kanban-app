@@ -2,30 +2,15 @@ import React from 'react';
 import uuid from 'uuid';
 import Notes from './Notes';
 import connect from '../libs/connect';
+import NoteActions from '../actions/NoteActions';
 
 class App extends React.Component {
-  constructor (props){
-    super(props);
-
-    this.state = {
-      notes: [
-              {
-               id: uuid.v4(),
-                task:'learn react'
-              },
-              {
-                id: uuid.v4(),
-                task: 'do laundry'
-              }
-            ]
-          };
-        }
 render(){
-  const{notes} = this.state;
+  const{notes} = this.props;
 
   return (
       <div>
-        {this.props.test}
+
         <button className="add-note" onClick={this.addNote}>+</button>
 
         <Notes
@@ -38,12 +23,10 @@ render(){
   }
 
   addNote = () => {
-    this.setState({
-       notes: this.state.notes.concat([{
-         id: uuid.v4(),
-         task: 'New task '
-       }])
-     });
+    this.props.NoteActions.create({
+      id: uuid.v4(),
+      task:'new task'
+    });
    }
 
    deleteNote = (id, e) => {
@@ -75,6 +58,8 @@ render(){
    });
   }
  }
- export default connect(() => ({
-   test: 'test'
- })) (App)
+ export default connect(({notes}) => ({
+  notes
+}),{
+  NoteActions
+}) (App)
