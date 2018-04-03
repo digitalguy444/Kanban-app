@@ -12,7 +12,7 @@ export default ({
           <Note
           className="note"
           onClick={onNoteClick.bind(null, id)}>
-                <Editable 
+                <Editable
                   className= "editable"
                   editing={editing}
                   value={task}

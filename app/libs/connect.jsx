@@ -14,8 +14,8 @@ function connect(state = () => {}, actions = {}, target) {
   class Connect extends React.Component {
     componentDidMount() {
       const {flux} = this.context;
-
-      flux.FinalStore.listen(this.handleChange);
+      // console.log(this.context);
+       flux.FinalStore.listen(this.handleChange);
     }
     componentWillUnmount(){
       const {flux} = this.context;
@@ -33,7 +33,7 @@ function connect(state = () => {}, actions = {}, target) {
         )
       );
     }
-    handleChange= () => {
+    handleChange = () => {
       this.forceUpdate();
     }
   }

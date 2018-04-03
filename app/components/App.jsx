@@ -5,36 +5,36 @@ import connect from '../libs/connect';
 import NoteActions from '../actions/NoteActions';
 
 class App extends React.Component {
-render(){
-  const{notes} = this.props;
+  render(){
+    const{notes} = this.props;
 
-  return (
-      <div>
+    return (
+        <div>
 
-        <button className="add-note" onClick={this.addNote}>+</button>
+          <button className="add-note" onClick={this.addNote}>+</button>
 
-        <Notes
-          notes={notes}
-          onNoteClick={this.activateNoteEdit}
-          onEdit={this.editNote}
-          onDelete={this.deleteNote} />
-      </div>
+          <Notes
+            notes={notes}
+            onNoteClick={this.activateNoteEdit}
+            onEdit={this.editNote}
+            onDelete={this.deleteNote} />
+        </div>
       );
   }
 
+
   addNote = () => {
-    this.props.NoteActions.create({
-      id: uuid.v4(),
-      task:'new task'
-    });
-   }
+      this.props.NoteActions.create({
+        id: uuid.v4(),
+        task:'new task'
+      });
+    }
 
    deleteNote = (id, e) => {
-    e.stopPropagation();
-//this will stop event bubbling
+    e.stopPropagation(); //this will stop event bubbling
      this.setState({
        notes: this.state.notes.filter(note => note.id !== id)
-                  });
+    });
    }
 
    activateNoteEdit = (id) => {
@@ -58,6 +58,7 @@ render(){
    });
   }
  }
+
  export default connect(({notes}) => ({
   notes
 }),{
