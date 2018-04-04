@@ -61,7 +61,8 @@
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.6",
-    "react-router": "^3.0.0",
-    "react-router-redux": "^4.0.7"
+    "react-router": "^3.0.2",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.7.2"
   }
 }
