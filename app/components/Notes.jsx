@@ -18,9 +18,9 @@ export default ({
                   value={task}
                   onEdit={onEdit.bind(null, id)} />
 
-                 <div
+                 <button
                    className="delete"
-                   onClick={onDelete.bind(null, id)}>delete</div>
+                   onClick={onDelete.bind(null, id)}> x </button>
           </Note>
         </li>
       )}</ul>
