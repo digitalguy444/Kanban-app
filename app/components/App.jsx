@@ -10,9 +10,7 @@ class App extends React.Component {
 
     return (
         <div>
-
           <button className="add-note" onClick={this.addNote}>+</button>
-
           <Notes
             notes={notes}
             onNoteClick={this.activateNoteEdit}
@@ -24,38 +22,25 @@ class App extends React.Component {
 
 
   addNote = () => {
-      this.props.NoteActions.create({
-        id: uuid.v4(),
-        task:'new task'
-      });
-    }
+    this.props.NoteActions.create({
+      id: uuid.v4(),
+      task:'new task'
+    });
+  }
 
    deleteNote = (id, e) => {
     e.stopPropagation(); //this will stop event bubbling
-    
 
-     this.props.NoteActions.delete(id);
+
+    this.props.NoteActions.delete(id);
    }
 
    activateNoteEdit = (id) => {
-     this.setState({
-       notes: this.state.notes.map(note=> {
-         if(note.id === id) {
-           note.editing = true;
-         }
-         return note;
-       })
-     });
+     this.props.NoteActions.update({id, editing: true});
    }
-   editNote = (id, task) => {this.setState({
-     notes: this.state.notes.map(note =>{
-       if(note.id === id) {
-         note.editing = false;
-         note.task = task;
-       }
-       return note;
-     })
-   });
+
+   editNote = (id, task) => {
+    this.props.NoteActions.update({id, task, editing: false});
   }
  }
 
