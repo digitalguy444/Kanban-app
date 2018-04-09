@@ -6,10 +6,9 @@ class Flux extends Alt {
     super(config);
 
     this.FinalStore = makeFinalStore(this);
-    // this.dispatcher.register(console.log.bind(console))
   }
 }
 
 const flux = new Flux();
 
-export default flux;
+export default flux
